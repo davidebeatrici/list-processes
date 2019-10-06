@@ -4,6 +4,7 @@
 
 #include <fcntl.h>
 #include <kvm.h>
+#include <paths.h>
 #include <sys/sysctl.h>
 #include <sys/user.h>
 
@@ -20,7 +21,11 @@ bool kvm_cleanup(kvm_t *kd)
 int main()
 {
 	char error[_POSIX2_LINE_MAX];
-	kvm_t *kd = kvm_open2(NULL, NULL, O_RDONLY, error, NULL);
+#ifdef KVM_NO_FILES
+	kvm_t *kd = kvm_openfiles(NULL, NULL, NULL, KVM_NO_FILES, error);
+#else
+	kvm_t *kd = kvm_openfiles(NULL, _PATH_DEVNULL, NULL, O_RDONLY, error);
+#endif
 	if (!kd) {
 		printf("kvm_open2() failed with error: %s\n", error);
 		return 1;

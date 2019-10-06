@@ -27,7 +27,7 @@ For example, the command for Clang would be:
 
 ### macOS
 
-Build **list-processes_macos.c** with your compiler of choice.
+Build **list-processes_macos.m** with your compiler of choice.
 
 If you get a linker error, make sure you're linking to the `AppKit` framework.
 

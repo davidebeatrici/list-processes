@@ -12,7 +12,7 @@
 #include <windows.h>
 #include <tlhelp32.h>
 
-bool utf16ToUtf8(const wchar_t *source, const size_t size, char *destination)
+bool utf16ToUtf8(const wchar_t *source, const int size, char *destination)
 {
 	if (!WideCharToMultiByte(CP_UTF8, 0, source, -1, destination, size, NULL, NULL)) {
 		printf("WideCharToMultiByte() failed with error %d\n", GetLastError());

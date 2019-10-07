@@ -32,7 +32,7 @@ Build **list-processes_macos.m** with your compiler of choice.
 If you get a linker error, make sure you're linking to the `AppKit` framework.
 
 For example, the command for Clang would be:
-`cc list-processes_macos.c -framework AppKit -o list-processes`
+`cc list-processes_macos.m -framework AppKit -o list-processes`
 
 ### Generic BSD
 
